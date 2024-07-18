@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Javascript Typing</title>
+
+  <style>
+    body{
+      font-family: sans-serif;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: blueviolet
+    }
+    .id{
+      position: absolute;
+      margin: 0;
+      opacity: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .inputField {
+      position: absolute;
+      margin: 0;
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <div id="sentence">if it works, don't touch it</div>
+<!--    <input type="text" id="inputField" placeholder="Write here!" autofocus>-->
+    <input type="keydown"
+  </div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const sentenceElement = document.getElementById("sentence");
+    const inputField = document.getElementById("inputField");
+    let sentence = sentenceElement.textContent;
+
+    inputField.addEventListener("input", function(event) {
+      const input = event.target.value;
+      let updatedSentence = sentence;
+
+      for (let char of input) {
+        const index = updatedSentence.indexOf(char);
+        if (index !== -1) {
+          updatedSentence = updatedSentence.slice(0, index) + updatedSentence.slice(index + 1);
+        }
+      }
+
+      sentenceElement.textContent = updatedSentence;
+
+      if (sentence.length === 0) {
+        alert("Done.");
+      }
+    });
+  });
+
+
+</script>
+</body>
+</html>
